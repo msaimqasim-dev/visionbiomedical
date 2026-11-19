@@ -231,15 +231,20 @@ export function Footer() {
         </div>
 
         <div className="mt-20 grid gap-6 md:grid-cols-2">
+          {/* The source images have solid left padding. These frames show only the logo area. */}
           <div className="flex items-center gap-6 rounded-3xl bg-white/[0.06] p-6 ring-1 ring-white/10">
             <div className="shrink-0 rounded-xl bg-white p-2">
-              <img src={images.hometownLogo} alt="Hometown Health" className="h-24 w-auto" />
+              <div className="relative aspect-[169/165] h-24 overflow-hidden rounded-md">
+                <img src={images.hometownLogo} alt="Hometown Health" className="absolute right-0 top-0 h-full w-auto max-w-none" />
+              </div>
             </div>
             <p className="leading-relaxed text-white/80">Vision Biomedical is a business partner of Hometown Health, LLC, an organization of rural and small hospitals</p>
           </div>
           <div className="flex items-center gap-6 rounded-3xl bg-white/[0.06] p-6 ring-1 ring-white/10">
             <div className="shrink-0 rounded-xl bg-white p-2">
-              <img src={images.gsascLogo} alt="Georgia Society of Ambulatory Surgery Centers" className="h-24 w-auto" />
+              <div className="relative aspect-[96/150] h-24 overflow-hidden rounded-md">
+                <img src={images.gsascLogo} alt="Georgia Society of Ambulatory Surgery Centers" className="absolute right-0 top-0 h-full w-auto max-w-none" />
+              </div>
             </div>
             <p className="leading-relaxed text-white/80">We are also a proud business partner of the Georgia Society of Ambulatory Surgery Centers</p>
           </div>
