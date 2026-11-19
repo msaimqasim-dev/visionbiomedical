@@ -59,6 +59,9 @@ export default function CareerPage() {
       <PageBanner title="Career" image={images.heroMedical} />
       <section className="relative bg-page py-28 lg:py-36">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="mb-6 text-lg font-semibold leading-relaxed text-brand-dark">
+            We are always looking for experienced Biomed Technicians.
+          </p>
           <Reveal>
             <article className={`max-w-4xl ${jobClass}`}>
               <header className="space-y-2">
