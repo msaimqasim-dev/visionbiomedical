@@ -4,26 +4,25 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Footer, Header, ScrollProgress } from './components/Layout';
 import Home from './pages/Home';
 import { AboutPage, RegulatoryPage, ServicesPage } from './pages/Company';
-import CareerPage from './pages/Career';
-import { careerDescription, careerTitle } from './data/career-meta';
+import CareerPage, { CareerJobPage } from './pages/Career';
+import { careerJobs, careerMetadata } from './data/career-meta';
 import NewsPage from './pages/News';
 import { ContactPage, GetAQuotePage } from './pages/Contact';
 
 function AppRoutes() {
   const location = useLocation();
-  const career = /^\/career\/?$/i.test(location.pathname);
+  const metadata = careerMetadata(location.pathname);
+  const title = metadata?.title ?? 'Vision Biomedical Services - Healthcare Technology Management';
+  const description = metadata?.description ?? 'Vision Biomedical Services specializes in healthcare technology management.';
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
   useEffect(() => {
-    document.title = career ? careerTitle : 'Vision Biomedical Services - Healthcare Technology Management';
-    document.querySelector('meta[name="description"]')?.setAttribute(
-      'content',
-      career ? careerDescription : 'Vision Biomedical Services specializes in healthcare technology management.',
-    );
-  }, [career]);
+    document.title = title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+  }, [title, description]);
 
   if (location.pathname === '/' && /^#\/(?!\/)/.test(location.hash)) {
     return <Navigate to={location.hash.slice(1)} replace />;
@@ -47,6 +46,8 @@ function AppRoutes() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/career/" element={<CareerPage />} />
+          <Route path={careerJobs.north.path} element={<CareerJobPage jobId="north" />} />
+          <Route path={careerJobs.atlanta.path} element={<CareerJobPage jobId="atlanta" />} />
           <Route path="/get-a-quote" element={<GetAQuotePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
