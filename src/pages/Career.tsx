@@ -62,6 +62,7 @@ function ApplicationDetails() {
       <p>Vision Biomedical Services, LLC</p>
       <p>Submit your resume and qualifications to be considered for this opportunity.</p>
       <p>Email: <a href={`mailto:${jobsEmail}`} className="break-words font-semibold text-brand underline">{jobsEmail}</a></p>
+      <Btn href={`mailto:${jobsEmail}`}>Apply now</Btn>
     </>
   );
 }
