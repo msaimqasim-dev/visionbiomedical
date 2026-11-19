@@ -4,9 +4,9 @@ import gsascLogo from '../assets/images/gsasc.png';
 import ecg from '../assets/images/ecg.jpg';
 import appointment from '../assets/images/appointment.jpg';
 import stethoscopeAbout from '../assets/images/stethoscope-about.jpg';
-import aboutBody from '../assets/images/about-body.jpg';
-import servicesHero from '../assets/images/services-hero.jpg';
-import servicesBody from '../assets/images/services-body.jpg';
+import aboutClientImage from '../assets/images/client-nov-2026/about-us-second-image.jpg';
+import servicesClientHero from '../assets/images/client-nov-2026/services-header-image.jpg';
+import servicesClientDetail from '../assets/images/client-nov-2026/services-detail-client.jpg';
 import docStethoscope from '../assets/images/doc-stethoscope.jpg';
 import equipmentHero from '../assets/images/equipment-hero.jpg';
 import m11_1 from '../assets/images/m11-1.jpg';
@@ -18,8 +18,10 @@ import excel1 from '../assets/images/excel-1.jpg';
 import excel2 from '../assets/images/excel-2.jpg';
 import excel3 from '../assets/images/excel-3.jpg';
 import regulatoryHero from '../assets/images/regulatory-hero.jpg';
-import regulatoryBody from '../assets/images/regulatory-body.jpg';
+import regulatoryClientImage from '../assets/images/client-nov-2026/regulatory-compliance-image.jpg';
 import newsHero from '../assets/images/news-hero.jpg';
+import contactHero from '../assets/images/client-nov-2026/contact-us-image.jpg';
+import homeLastImage from '../assets/images/client-nov-2026/home-last-image.jpg';
 import newsArticle from '../assets/images/news-article.jpg';
 import quoteHero from '../assets/images/quote-hero.jpg';
 import heroMedical from '../assets/images/hero-medical.jpg';
@@ -30,16 +32,18 @@ export const images = {
   gsascLogo,
   ecg,
   appointment,
+  homeLastImage,
   stethoscopeAbout,
-  aboutBody,
-  servicesHero,
-  servicesBody,
+  aboutBody: aboutClientImage,
+  servicesHero: servicesClientHero,
+  servicesBody: servicesClientDetail,
   docStethoscope,
   equipmentHero,
   partsHero,
   regulatoryHero,
-  regulatoryBody,
+  regulatoryBody: regulatoryClientImage,
   newsHero,
+  contactHero,
   newsArticle,
   quoteHero,
   heroMedical,

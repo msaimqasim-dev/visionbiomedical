@@ -164,7 +164,7 @@ function ServicesSplit() {
 function CtaBand() {
   return (
     <section className="relative isolate overflow-hidden py-36">
-      <ParallaxBg src={images.appointment} strength={120} />
+      <ParallaxBg src={images.homeLastImage} strength={120} />
       <div className="absolute inset-0 bg-brand-dark/85" />
       <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark" />
       <div className="relative mx-auto max-w-5xl px-5 text-center lg:px-8">

@@ -4,7 +4,7 @@ import { company, images } from '../data/content';
 export function ContactPage() {
   return (
     <>
-      <PageBanner title="Contact Us" image={images.newsHero} />
+      <PageBanner title="Contact Us" image={images.contactHero} />
       <ContactBand light showPhone emails={[company.serviceEmail, company.email]} subject="Contact Us inquiry" />
     </>
   );
