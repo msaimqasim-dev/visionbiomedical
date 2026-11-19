@@ -81,9 +81,6 @@ export const homeCards = [
 ];
 
 export const marqueeItems = [
-  'About Us',
-  'Our Services',
-  'Contact Us',
   'Vision Biomedical Services',
   'For All Your Medical Equipment Needs',
 ];

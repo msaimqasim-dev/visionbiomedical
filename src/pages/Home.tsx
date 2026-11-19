@@ -78,9 +78,9 @@ function Hero() {
 
 function Marquee() {
   const group = (
-    <div className="flex shrink-0 items-center gap-10 pr-10">
-      {marqueeItems.map((t) => (
-        <span key={t} className="flex items-center gap-10">
+    <div className="flex min-w-[100vw] shrink-0 items-center justify-around gap-10 pr-10">
+      {[...marqueeItems, ...marqueeItems].map((t, index) => (
+        <span key={`${t}-${index}`} className="flex items-center gap-10">
           {t}
           <span className="h-2.5 w-2.5 rounded-full bg-brand-dark" />
         </span>
@@ -89,7 +89,8 @@ function Marquee() {
   );
   return (
     <div className="overflow-hidden bg-teal py-6 text-brand-dark">
-      <div className="flex w-max animate-marquee whitespace-nowrap font-display text-2xl font-extrabold uppercase tracking-tight md:text-3xl">
+      <span className="sr-only">{marqueeItems.join('. ')}</span>
+      <div aria-hidden="true" className="flex w-max animate-marquee whitespace-nowrap font-display text-2xl font-extrabold uppercase tracking-tight md:text-3xl">
         {group}
         {group}
       </div>
