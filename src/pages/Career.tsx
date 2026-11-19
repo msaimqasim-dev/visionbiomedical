@@ -138,7 +138,7 @@ export function CareerJobPage({ jobId }: { jobId: keyof typeof careerJobs }) {
 
   return (
     <>
-      <PageBanner title={job.title} image={images.heroMedical} />
+      <PageBanner title={job.title} image={images.heroMedical} eyebrow={job.location} subtitle={employment} />
       <section className="relative bg-page py-28 lg:py-36">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Link to="/career/" className="mb-8 inline-flex items-center gap-2 font-semibold text-brand hover:underline">
@@ -146,10 +146,6 @@ export function CareerJobPage({ jobId }: { jobId: keyof typeof careerJobs }) {
             Back to all openings
           </Link>
           <article className={`max-w-4xl ${jobClass}`}>
-            <header className="space-y-2">
-              <p className="font-semibold text-brand-dark">{job.location}</p>
-              <p>{employment}</p>
-            </header>
             {jobId === 'north' ? <NorthJobContent /> : <AtlantaJobContent />}
           </article>
         </div>

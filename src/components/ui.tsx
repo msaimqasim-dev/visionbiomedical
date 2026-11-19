@@ -139,7 +139,12 @@ export function Btn({
 }
 
 /* ---------- Page banner (parallax title) ---------- */
-export function PageBanner({ title, image }: { title: string; image: string }) {
+export function PageBanner({ title, image, eyebrow, subtitle }: {
+  title: string;
+  image: string;
+  eyebrow?: string;
+  subtitle?: string;
+}) {
   return (
     <section className="relative flex min-h-[64vh] items-end overflow-hidden bg-brand-dark pb-20 pt-48 lg:min-h-[78vh]">
       <ParallaxBg src={image} strength={120} />
@@ -151,9 +156,11 @@ export function PageBanner({ title, image }: { title: string; image: string }) {
           transition={{ duration: 1, ease: EASE }}
           className="mb-7 block h-1 w-20 origin-left rounded-full bg-teal"
         />
+        {eyebrow && <p className="mb-4 text-lg font-semibold text-white">{eyebrow}</p>}
         <h1 className="font-display text-5xl font-extrabold leading-[1.02] tracking-tight text-white md:text-7xl lg:text-8xl">
           <SplitText text={title} immediate />
         </h1>
+        {subtitle && <p className="mt-5 text-lg leading-relaxed text-white/90">{subtitle}</p>}
       </div>
     </section>
   );
