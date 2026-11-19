@@ -56,6 +56,16 @@ function JobList({ items }: { items: string[] }) {
   );
 }
 
+function ApplicationDetails() {
+  return (
+    <>
+      <p>Vision Biomedical Services, LLC</p>
+      <p>Submit your resume and qualifications to be considered for this opportunity.</p>
+      <p>Email: <a href={`mailto:${jobsEmail}`} className="break-words font-semibold text-brand underline">{jobsEmail}</a></p>
+    </>
+  );
+}
+
 function NorthJobContent() {
   return (
     <>
@@ -65,8 +75,9 @@ function NorthJobContent() {
       <JobList items={northQualifications} />
       <p>If you are an experienced BMET II looking for an opportunity to advance your career with a company committed to quality, reliability, and exceptional customer service, we encourage you to apply.</p>
       <JobList items={benefits} />
+      <h2 className={heading}>Apply Today!</h2>
       <p>Apply today! We look forward to hearing from you.</p>
-      <p>Email: <a href={`mailto:${jobsEmail}`} className="break-words font-semibold text-brand underline">{jobsEmail}</a></p>
+      <ApplicationDetails />
     </>
   );
 }
@@ -89,9 +100,7 @@ function AtlantaJobContent() {
       <p>If you are an experienced BMET who enjoys working independently, traveling to different facilities, and taking pride in your work, we would like to hear from you.</p>
       <h2 className={heading}>Apply Today!</h2>
       <p>Join a growing biomedical service company that values experience, professionalism, and quality workmanship.</p>
-      <p>Vision Biomedical Services, LLC</p>
-      <p>Submit your resume and qualifications to be considered for this opportunity.</p>
-      <p>Email: <a href={`mailto:${jobsEmail}`} className="break-words font-semibold text-brand underline">{jobsEmail}</a></p>
+      <ApplicationDetails />
     </>
   );
 }
