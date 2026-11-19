@@ -1,22 +1,13 @@
+import { Building2, Phone, Stethoscope } from 'lucide-react';
 import logo from '../assets/images/logo.png';
 import hometownLogo from '../assets/images/hometown.png';
 import gsascLogo from '../assets/images/gsasc.png';
-import ecg from '../assets/images/ecg.jpg';
 import appointment from '../assets/images/appointment.jpg';
 import stethoscopeAbout from '../assets/images/stethoscope-about.jpg';
 import aboutClientImage from '../assets/images/client-nov-2026/about-us-second-image.jpg';
 import servicesClientHero from '../assets/images/client-nov-2026/services-header-image.jpg';
 import servicesClientDetail from '../assets/images/client-nov-2026/services-detail-client.jpg';
 import docStethoscope from '../assets/images/doc-stethoscope.jpg';
-import equipmentHero from '../assets/images/equipment-hero.jpg';
-import m11_1 from '../assets/images/m11-1.jpg';
-import m11_2 from '../assets/images/m11-2.jpg';
-import m11_3 from '../assets/images/m11-3.jpg';
-import m11_4 from '../assets/images/m11-4.jpg';
-import partsHero from '../assets/images/parts-hero.jpg';
-import excel1 from '../assets/images/excel-1.jpg';
-import excel2 from '../assets/images/excel-2.jpg';
-import excel3 from '../assets/images/excel-3.jpg';
 import regulatoryHero from '../assets/images/regulatory-hero.jpg';
 import regulatoryClientImage from '../assets/images/client-nov-2026/regulatory-compliance-image.jpg';
 import newsHero from '../assets/images/news-hero.jpg';
@@ -30,7 +21,6 @@ export const images = {
   logo,
   hometownLogo,
   gsascLogo,
-  ecg,
   appointment,
   homeLastImage,
   stethoscopeAbout,
@@ -38,8 +28,6 @@ export const images = {
   servicesHero: servicesClientHero,
   servicesBody: servicesClientDetail,
   docStethoscope,
-  equipmentHero,
-  partsHero,
   regulatoryHero,
   regulatoryBody: regulatoryClientImage,
   newsHero,
@@ -49,7 +37,6 @@ export const images = {
   heroMedical,
 };
 
-/* The original homepage hero slider images, without the first doctor (doc1.jpg). */
 export const heroBackgrounds = [
   images.heroMedical,
   images.newsHero,
@@ -57,68 +44,40 @@ export const heroBackgrounds = [
   images.docStethoscope,
 ];
 
-export const equipmentGallery = [m11_1, m11_2, m11_3, m11_4];
-export const partsGallery = [excel1, excel2, excel3];
-
 export const company = {
   phone: '(866) 571-9770',
   phoneHref: 'tel:8665719770',
-  email: 'sales@visionbiomedicalservices.com',
   serviceEmail: 'service@visionbiomedicalservices.com',
-  partsEmail: 'services@visionbiomedicalservices.com',
   address: ['Vision Biomedical Services', '3021-2 Sandy Parkway Suite I', 'Columbus, GA 31909'],
   appointment: 'By Appointment Only',
-  copyright: 'Copyright © 2020 | All Rights Reserved | Powered by Vroooom',
-  ebay: 'https://www.ebay.com/itm/264145749269?ssPageName=STRK:MESELX:IT&_trksid=p3984.m1555.l2649',
 };
 
-export type NavChild = { label: string; to: string };
-export type NavItem = { label: string; to?: string; children?: NavChild[] };
-
-export const nav: NavItem[] = [
+export const nav = [
   { label: 'About Us', to: '/about-us' },
   { label: 'Services', to: '/services' },
-  {
-    label: 'Sales',
-    children: [
-      { label: 'Equipment', to: '/sales/equipment' },
-      { label: 'Parts', to: '/sales/parts' },
-    ],
-  },
   { label: 'Regulatory Compliance', to: '/regulatory-compliance' },
   { label: 'News', to: '/news' },
   { label: 'Contact Us', to: '/contact-us' },
+  { label: 'Career', to: '/career/' },
 ];
 
 export const copy = {
   founded:
-    'Vision Biomedical was founded by an AAMI certified Biomed Tech with over 30 years experience due to a clear need for medical equipment management by one company.',
+    'The founder of Vision Biomedical has 35+ years of individual biomedical equipment experience.',
   provides:
     'Vision Biomedical Services provides a complete medical equipment management program and offers services in all areas.',
-  quote: 'Vision Biomedical Services can provide a free quote for all of your medical equipment needs.',
+  quote: 'Vision Biomedical Services can provide a free quote for your medical equipment service needs.',
   specializes: 'Vision Biomedical Services specializes in healthcare technology management.',
   includes:
-    'This includes preventive maintenance and repair, contract management, and new or refurbished equipment purchases. It also includes providing all documentation and support needed for state and regulatory agency compliance. Our management staff can also be onsite to assist during any Joint Commission, DNV, or state visits.',
+    'This includes preventive maintenance, repair, and contract management. It also includes providing all documentation and support needed for state and regulatory agency compliance. Our management staff can also be onsite to assist during any Joint Commission, DNV, or state visits.',
   technicians:
     'Our technicians are experienced, manufacturer trained professionals. We service general medical, anesthesia, sterilization, and imaging equipment. Our technicians are continuously learning new technology and being trained by various manufacturer’s so we can meet all of your service needs. We can also manage the service on any specialty equipment that can only be serviced by the manufacturer, taking the burden off of your department managers or administrators.',
-  partnerHometown:
-    'Vision Biomedical is a business partner of Hometown Health, LLC, an organization of rural and small hospitals',
-  partnerGsasc:
-    'We are also a proud business partner of the Georgia Society of Ambulatory Surgery Centers',
 };
 
-export const heroSlides = [
-  { title: 'Vision Biomedical Services', text: copy.specializes },
-  { title: 'About Us', text: copy.founded },
-  { title: 'Our Services', text: copy.provides },
-  { title: 'Contact Us', text: copy.quote },
-  { title: 'For All Your Medical Equipment Needs', text: '' },
-];
-
 export const homeCards = [
-  { title: 'About Us', text: copy.founded, to: '/about-us' },
-  { title: 'Our Services', text: copy.provides, to: '/services' },
-  { title: 'Contact Us', text: copy.quote, to: '/contact-us' },
+  { title: 'About Us', text: copy.founded, to: '/about-us', icon: Building2 },
+  { title: 'Our Services', text: copy.provides, to: '/services', icon: Stethoscope },
+  { title: 'Contact Us', text: copy.quote, to: '/contact-us', icon: Phone },
 ];
 
 export const marqueeItems = [

@@ -9,6 +9,8 @@
   --color-navy: #274270;
   --color-teal: #19c1c7;
   --color-ink: #0b1f3f;
+  --color-page: #f1f7ff;
+  --color-page-accent: #eaf3ff;
 
   --animate-marquee: marquee 40s linear infinite;
 
@@ -25,7 +27,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-white font-sans text-slate-600;
+    @apply bg-page font-sans text-slate-600;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -33,5 +35,24 @@
   ::selection {
     background: var(--color-teal);
     color: var(--color-brand-dark);
+  }
+}
+
+@layer components {
+  .logo-watermark {
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .logo-watermark::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -50vmax;
+    pointer-events: none;
+    background: url("./assets/images/logo.png") space center / clamp(15rem, 29vw, 26rem) auto;
+    mix-blend-mode: multiply;
+    opacity: 0.042;
+    transform: rotate(-15deg);
   }
 }

@@ -83,7 +83,7 @@ export default function NewsPage() {
         </div>
       </section>
 
-      <section className="relative bg-white py-28 lg:py-36">
+      <section className="relative bg-page py-28 lg:py-36">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <Reveal className="relative lg:col-span-5">
             <div className="absolute inset-0 translate-x-5 translate-y-5 rounded-[2rem] bg-teal" />

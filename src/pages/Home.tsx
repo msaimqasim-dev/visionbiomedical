@@ -47,7 +47,7 @@ function Hero() {
             transition={{ delay: 0.5, duration: 0.8, ease: EASE }}
             className="mt-8 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
           >
-            {copy.specializes}
+            Healthcare technology management, handled with care.
           </motion.p>
         </div>
 
@@ -99,24 +99,23 @@ function Marquee() {
 
 function Cards() {
   return (
-    <section className="relative bg-white py-28 lg:py-36">
+    <section className="relative bg-page py-28 lg:py-36">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 md:grid-cols-3 lg:px-8">
-        {homeCards.map((card, k) => (
+        {homeCards.map(({ icon: Icon, ...card }, k) => (
           <Reveal key={card.to} delay={k * 0.15}>
             <Link
               to={card.to}
-              className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-10 shadow-2xl shadow-brand-dark/30 ring-1 ring-slate-200/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-brand/25"
+              className="group relative flex h-full flex-col items-center overflow-hidden rounded-3xl bg-white px-8 py-10 text-center shadow-2xl shadow-brand-dark/30 ring-1 ring-slate-200/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-brand/25"
             >
-              <div className="flex h-44 items-center justify-center">
-                <img
-                  src={images.ecg}
-                  alt=""
-                  className="max-h-40 w-auto mix-blend-multiply transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="mt-8 font-display text-2xl font-bold tracking-tight text-ink">{card.title}</h3>
-              <p className="mt-4 text-[17px] leading-relaxed text-slate-600">{card.text}</p>
-              <span className="mt-auto grid h-12 w-12 place-items-center rounded-full bg-brand/10 text-brand transition duration-500 group-hover:bg-brand group-hover:text-white mt-10">
+              <Icon
+                aria-hidden="true"
+                size={72}
+                strokeWidth={1.5}
+                className="shrink-0 text-brand transition-transform duration-700 group-hover:scale-110"
+              />
+              <h3 className="mt-6 font-display text-2xl font-bold tracking-tight text-ink">{card.title}</h3>
+              <p className="mb-6 mt-3 max-w-xs text-[17px] leading-relaxed text-slate-600">{card.text}</p>
+              <span className="mt-auto grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand/10 text-brand transition duration-500 group-hover:bg-brand group-hover:text-white">
                 <ArrowUpRight size={20} />
               </span>
               <span className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-teal transition-transform duration-700 group-hover:scale-x-100" />
@@ -130,7 +129,7 @@ function Cards() {
 
 function ServicesSplit() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-28 lg:py-40">
+    <section className="logo-watermark relative bg-page-accent py-28 lg:py-40">
       <div className="pointer-events-none absolute -left-40 top-20 h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-3xl" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-20 px-5 lg:grid-cols-2 lg:px-8">
         <div>
@@ -142,6 +141,7 @@ function ServicesSplit() {
           </Reveal>
           <Reveal delay={0.3}>
             <p className="mt-6 text-lg leading-relaxed text-slate-600">{copy.includes}</p>
+            <p className="mt-6 text-lg leading-relaxed text-slate-600">Combined experience of all of my guys is over 150 years in different HTM roles</p>
           </Reveal>
           <Reveal delay={0.4} className="mt-12">
             <Btn to="/services">Services</Btn>
@@ -154,6 +154,7 @@ function ServicesSplit() {
           </div>
           <div className="absolute -bottom-16 left-6 right-6 rounded-3xl bg-white p-8 shadow-2xl md:-left-14 md:right-auto md:max-w-md">
             <p className="leading-relaxed text-slate-700">{copy.technicians}</p>
+            <p className="mt-4 leading-relaxed text-slate-700">VBS has technicians located all over GA.</p>
           </div>
         </Reveal>
       </div>

@@ -1,19 +1,33 @@
 import { useEffect } from 'react';
-import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
 import { Footer, Header, ScrollProgress } from './components/Layout';
 import Home from './pages/Home';
 import { AboutPage, RegulatoryPage, ServicesPage } from './pages/Company';
-import { EquipmentPage, PartsPage } from './pages/Sales';
+import CareerPage from './pages/Career';
+import { careerDescription, careerTitle } from './data/career-meta';
 import NewsPage from './pages/News';
 import { ContactPage, GetAQuotePage } from './pages/Contact';
 
 function AppRoutes() {
   const location = useLocation();
+  const career = /^\/career\/?$/i.test(location.pathname);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  useEffect(() => {
+    document.title = career ? careerTitle : 'Vision Biomedical Services - Healthcare Technology Management';
+    document.querySelector('meta[name="description"]')?.setAttribute(
+      'content',
+      career ? careerDescription : 'Vision Biomedical Services specializes in healthcare technology management.',
+    );
+  }, [career]);
+
+  if (location.pathname === '/' && /^#\/(?!\/)/.test(location.hash)) {
+    return <Navigate to={location.hash.slice(1)} replace />;
+  }
 
   return (
     <AnimatePresence mode="wait" initial={false}>
@@ -29,12 +43,10 @@ function AppRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/sales" element={<Navigate to="/sales/equipment" replace />} />
-          <Route path="/sales/equipment" element={<EquipmentPage />} />
-          <Route path="/sales/parts" element={<PartsPage />} />
           <Route path="/regulatory-compliance" element={<RegulatoryPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/contact-us" element={<ContactPage />} />
+          <Route path="/career/" element={<CareerPage />} />
           <Route path="/get-a-quote" element={<GetAQuotePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
@@ -45,11 +57,11 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollProgress />
       <Header />
       <AppRoutes />
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   );
 }

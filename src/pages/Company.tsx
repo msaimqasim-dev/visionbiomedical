@@ -2,6 +2,10 @@ import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
 import { Btn, ContactBand, EASE, ParallaxBg, PageBanner, Reveal, SplitText } from '../components/ui';
 import { company, images } from '../data/content';
+import { companyStory, compliance, complianceAgencies, complianceQuote, facilities, flexibleSupport, serviceAreas, serviceCapabilities, tracking } from '../data/client-copy';
+
+const sectionHeading = 'font-display text-3xl font-bold text-ink md:text-4xl';
+const bodyText = 'text-lg leading-relaxed text-slate-600';
 
 const servicesList = [
   'On-site Clinical/Biomedical Engineering Manager',
@@ -27,7 +31,7 @@ export function AboutPage() {
   return (
     <>
       <PageBanner title="About Us" image={images.stethoscopeAbout} />
-      <section className="relative bg-white py-28 lg:py-36">
+      <section className="logo-watermark relative bg-page-accent py-28 lg:py-36">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <Reveal className="relative lg:col-span-6">
             <div className="absolute inset-0 translate-x-5 translate-y-5 rounded-[2rem] bg-teal" />
@@ -46,7 +50,7 @@ export function AboutPage() {
             </Reveal>
             <Reveal delay={0.3}>
               <p className="mt-6 text-lg leading-relaxed text-slate-600">
-                In addition to providing personalized service, we help our clients significantly reduce costs by consolidating current contracts and by simply providing better service at a lower cost. We strive to be the best at delivering innovative solutions to improve the quality of healthcare.
+                {companyStory}
               </p>
             </Reveal>
             <Reveal delay={0.4} className="mt-12">
@@ -63,7 +67,7 @@ export function ServicesPage() {
   return (
     <>
       <PageBanner title="Services" image={images.servicesHero} />
-      <section className="relative bg-white py-28 lg:py-36">
+      <section className="relative bg-page py-28 lg:py-36">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
             <p className="max-w-5xl font-display text-3xl font-semibold leading-snug tracking-tight text-ink md:text-5xl">
@@ -97,6 +101,15 @@ export function ServicesPage() {
             </ul>
           </div>
 
+          <Reveal className="mt-20 max-w-4xl">
+            <h2 className={sectionHeading}>Service Capabilities</h2>
+            <ul className={`mt-6 grid list-disc gap-x-10 gap-y-2 pl-6 md:grid-cols-2 ${bodyText}`}>
+              {serviceCapabilities.map((service) => <li key={service}>{service}</li>)}
+            </ul>
+            <h2 className={`mt-12 ${sectionHeading}`}>Flexible On-Site Support</h2>
+            <p className={`mt-6 ${bodyText}`}>{flexibleSupport}</p>
+          </Reveal>
+
           <Reveal className="mt-28 max-w-4xl">
             <p className="text-xl leading-relaxed text-brand-dark">
               We also offer consulting services to help ensure all areas of healthcare technology management are being managed effectively.
@@ -118,9 +131,36 @@ export function ServicesPage() {
               ))}
             </div>
           </div>
+
+          <Reveal className="mt-20">
+            <h2 className={sectionHeading}>Facilities We Serve</h2>
+            <p className={`mt-6 ${bodyText}`}>Vision Biomedical provides services for:</p>
+            <ul className={`mt-4 grid list-disc gap-x-10 gap-y-2 pl-6 md:grid-cols-2 ${bodyText}`}>
+              {facilities.map((facility) => <li key={facility}>{facility}</li>)}
+            </ul>
+          </Reveal>
+
+          <Reveal className="mt-20 max-w-4xl">
+            <h2 className={sectionHeading}>Tracking &amp; Reporting</h2>
+            <p className={`mt-6 ${bodyText}`}>{tracking}</p>
+          </Reveal>
+
+          <Reveal className="mt-20">
+            <h2 className={sectionHeading}>Service Area</h2>
+            <div className="mt-6 grid gap-10 md:grid-cols-3">
+              {serviceAreas.map(({ name, cities }, index) => (
+                <div key={name} className={index === 0 ? 'md:col-span-2' : undefined}>
+                  <h3 className="font-display text-xl font-bold text-brand-dark">{name}</h3>
+                  <ul className={`mt-4 list-disc space-y-2 pl-6 ${bodyText} ${index === 0 ? 'sm:columns-2' : ''}`}>
+                    {cities.map((city) => <li key={city} className="break-inside-avoid">{city}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
-      <ContactBand emails={[company.serviceEmail, company.email]} subject="Services inquiry" />
+      <ContactBand emails={[company.serviceEmail]} subject="Services inquiry" />
     </>
   );
 }
@@ -129,7 +169,7 @@ export function RegulatoryPage() {
   return (
     <>
       <PageBanner title="Regulatory Compliance" image={images.regulatoryHero} />
-      <section className="relative bg-white py-28 lg:py-36">
+      <section className="relative bg-page py-28 lg:py-36">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-2 lg:px-8">
           <div>
             <Reveal>
@@ -144,7 +184,7 @@ export function RegulatoryPage() {
             </Reveal>
             <Reveal delay={0.25}>
               <p className="mt-6 text-lg leading-relaxed text-slate-600">
-                We will work with your staff to ensure everything is up to date and compliant ahead of time, so that inspections go as smoothly as possible.
+                {compliance}
               </p>
             </Reveal>
             <Reveal delay={0.35} className="mt-12">
@@ -156,6 +196,21 @@ export function RegulatoryPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-2xl">
               <ParallaxBg src={images.regulatoryBody} strength={60} />
             </div>
+          </Reveal>
+        </div>
+        <div className="mx-auto mt-20 grid max-w-7xl gap-16 px-5 lg:grid-cols-2 lg:px-8">
+          <Reveal>
+            <h2 className={sectionHeading}>Customer Testimonial</h2>
+            <figure className={`mt-6 ${bodyText}`}>
+              <blockquote>{complianceQuote}</blockquote>{' '}
+              <figcaption>From a long time, customer</figcaption>
+            </figure>
+          </Reveal>
+          <Reveal>
+            <h2 className={sectionHeading}>Regulatory Compliance Agencies</h2>
+            <ul className={`mt-6 list-disc space-y-2 pl-6 ${bodyText}`}>
+              {complianceAgencies.map((agency) => <li key={agency}>{agency}</li>)}
+            </ul>
           </Reveal>
         </div>
       </section>

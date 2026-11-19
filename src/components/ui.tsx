@@ -402,7 +402,7 @@ export function ContactBand({
   subject: string;
 }) {
   return (
-    <section className={`relative isolate overflow-hidden py-28 lg:py-36 ${light ? 'bg-white' : ''}`}>
+    <section className={`relative isolate overflow-hidden py-28 lg:py-36 ${light ? 'bg-page' : ''}`}>
       {!light && (
         <>
           <ParallaxBg src={images.docStethoscope} strength={80} />

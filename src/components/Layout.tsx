@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
-import { ArrowUpRight, ChevronDown, Mail, Menu, Phone, X } from 'lucide-react';
-import { company, images, nav, type NavChild } from '../data/content';
+import { ArrowUpRight, Mail, Menu, Phone, X } from 'lucide-react';
+import { company, images, nav } from '../data/content';
 import { btnBase, btnVariants, EASE } from './ui';
 
 export function ScrollProgress() {
@@ -21,9 +21,7 @@ const linkBase = 'isolate relative rounded-full px-4 py-2.5 text-[15px] font-sem
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
-  const salesActive = pathname.startsWith('/sales');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -34,12 +32,7 @@ export function Header() {
 
   useEffect(() => {
     setMenuOpen(false);
-    setDropdown(false);
   }, [pathname]);
-
-  const mobileLinks: NavChild[] = nav.flatMap((item) =>
-    item.children ? item.children : [{ label: item.label, to: item.to! }],
-  );
 
   return (
     <>
@@ -49,10 +42,10 @@ export function Header() {
             scrolled ? 'max-h-0 opacity-0' : 'max-h-12 opacity-100'
           }`}
         >
-          <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-5 lg:px-8">
-            <a href={`mailto:${company.email}`} className="flex items-center gap-2 text-white/90 transition hover:text-teal">
+          <div className="mx-auto flex h-10 max-w-7xl items-center justify-center px-5 max-sm:flex-col sm:justify-between lg:px-8">
+            <a href={`mailto:${company.serviceEmail}`} className="flex items-center gap-2 text-white/90 transition hover:text-teal">
               <Mail size={14} />
-              {company.email}
+              {company.serviceEmail}
             </a>
             <div className="flex items-center gap-6">
               <a href={company.phoneHref} className="flex items-center gap-2 font-medium transition hover:text-teal">
@@ -77,53 +70,10 @@ export function Header() {
             </Link>
 
             <nav className="hidden items-center lg:flex" aria-label="Main">
-              {nav.map((item) =>
-                item.children ? (
-                  <div
-                    key={item.label}
-                    className="relative"
-                    onMouseEnter={() => setDropdown(true)}
-                    onMouseLeave={() => setDropdown(false)}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setDropdown((v) => !v)}
-                      aria-expanded={dropdown}
-                      className={`${linkBase} flex items-center gap-1 ${salesActive ? 'text-brand' : 'text-slate-800 hover:text-brand'}`}
-                    >
-                      {item.label}
-                      <ChevronDown size={16} className={`transition-transform duration-300 ${dropdown ? 'rotate-180' : ''}`} />
-                    </button>
-                    <AnimatePresence>
-                      {dropdown && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 12 }}
-                          transition={{ duration: 0.25 }}
-                          className="absolute left-0 top-full w-60 rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-slate-200"
-                        >
-                          {item.children.map((c) => (
-                            <NavLink
-                              key={c.to}
-                              to={c.to}
-                              className={({ isActive }) =>
-                                `block rounded-xl px-4 py-3 text-[15px] font-medium transition ${
-                                  isActive ? 'bg-brand/10 text-brand' : 'text-slate-700 hover:bg-slate-100 hover:text-brand'
-                                }`
-                              }
-                            >
-                              {c.label}
-                            </NavLink>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
+              {nav.map((item) => (
                   <NavLink
                     key={item.to}
-                    to={item.to!}
+                    to={item.to}
                     className={({ isActive }) => `${linkBase} ${isActive ? 'text-brand' : 'text-slate-800 hover:text-brand'}`}
                   >
                     {({ isActive }) => (
@@ -139,8 +89,7 @@ export function Header() {
                       </>
                     )}
                   </NavLink>
-                ),
-              )}
+              ))}
               <Link
                 to="/get-a-quote"
                 className="ml-4 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-[4px_4px_0_0_#19c1c7] transition hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_#19c1c7]"
@@ -190,7 +139,7 @@ export function Header() {
               </div>
               <p className="mt-10 text-xs font-semibold uppercase tracking-[0.25em] text-teal">Select Page</p>
               <nav className="mt-4 flex flex-col">
-                {mobileLinks.map((l, k) => (
+                {nav.map((l, k) => (
                   <motion.div
                     key={l.to}
                     initial={{ opacity: 0, x: 30 }}
@@ -243,28 +192,13 @@ export function Footer() {
           <div className="lg:col-span-3">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-teal">Select Page</p>
             <ul className="mt-6 space-y-4">
-              {nav.map((item) =>
-                item.children ? (
-                  <li key={item.label}>
-                    <span className="text-lg font-medium text-white/60">{item.label}</span>
-                    <ul className="mt-3 space-y-3 border-l border-white/15 pl-5">
-                      {item.children.map((c) => (
-                        <li key={c.to}>
-                          <Link to={c.to} className="text-white/90 transition hover:text-teal">
-                            {c.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ) : (
+              {nav.map((item) => (
                   <li key={item.to}>
-                    <Link to={item.to!} className="text-lg font-medium text-white/90 transition hover:text-teal">
+                    <Link to={item.to} className="text-lg font-medium text-white/90 transition hover:text-teal">
                       {item.label}
                     </Link>
                   </li>
-                ),
-              )}
+              ))}
             </ul>
           </div>
 
@@ -275,9 +209,6 @@ export function Footer() {
                 <p className="text-sm text-white/50">Email</p>
                 <a href="mailto:service@visionbiomedicalservices.com" className="mt-1 block transition hover:text-teal">
                   service@visionbiomedicalservices.com
-                </a>
-                <a href={`mailto:${company.email}`} className="mt-1 block transition hover:text-teal">
-                  {company.email}
                 </a>
               </div>
               <div>
